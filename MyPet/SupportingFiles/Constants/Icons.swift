@@ -16,4 +16,5 @@ enum Icons {
     static let Micophone: UIImage = .microphoneIcon
     static let MessageBig: UIImage = .messageBigIcon
     static let Close: UIImage = .closeIcon
+    static let ArrowRight: UIImage = .arrowRightIcon
 }

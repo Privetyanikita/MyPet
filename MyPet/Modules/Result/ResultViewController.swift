@@ -95,10 +95,15 @@ final class ResultViewController: UIViewController {
     }
     
     private func setupScreens() {
-        if fromRequest == .human {
-            
-        } else {
-            
+        
+        if fromRequest == .human && toRequest == .cat {
+            SoundPlayer.shared.playSound(soundFileName: Sounds.cetMeow)
+        } else if fromRequest == .human && toRequest == .dog {
+            SoundPlayer.shared.playSound(soundFileName: Sounds.dogGav)
+        } else if fromRequest == .pet && toRequest == .cat {
+            requestLabel.text = Strings.AnswerPets.cat.randomElement()
+        } else if fromRequest == .pet && toRequest == .dog {
+            requestLabel.text = Strings.AnswerPets.dog.randomElement()
         }
         
         switch toRequest {

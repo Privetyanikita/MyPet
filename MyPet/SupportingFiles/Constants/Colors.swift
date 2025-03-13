@@ -14,4 +14,5 @@ enum Colors {
     ]
     static let dogPetSwitcherBackGround = UIColor(red: 236/255, green: 251/255, blue: 199/255, alpha: 1)
     static let catPetSwitcherBackGround = UIColor(red: 209/255, green: 231/255, blue: 251/255, alpha: 1)
+    static let settingsCellBackGround = UIColor(red: 214/255, green: 220/255, blue: 255/255, alpha: 1)
 }

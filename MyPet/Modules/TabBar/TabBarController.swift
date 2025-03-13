@@ -10,7 +10,7 @@ import UIKit
 final class TabBarController: UITabBarController {
     
     private let customTabBarView = UIView()
-    private let customTabBarHeight: CGFloat = 70
+    private let customTabBarHeight: CGFloat = 82
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ final class TabBarController: UITabBarController {
 
     private func setupCustomTabBar() {
         let tabBarWidth = view.bounds.width * 0.55
-        let tabBarYPosition = view.bounds.height - customTabBarHeight - 50
+        let tabBarYPosition = view.bounds.height - customTabBarHeight - 45
         
         customTabBarView.frame = CGRect(
             x: (view.bounds.width - tabBarWidth) / 2,
@@ -61,7 +61,7 @@ final class TabBarController: UITabBarController {
         let translatorButton = createButton(
             title: Strings.ButtonTitles.translator,
             image: Icons.Massages,
-            font: UIFont.systemFont(ofSize: 12),
+            font: UIFont(name: Fonts.KonkhmerSleokchher.regular, size: 12) ?? UIFont.systemFont(ofSize: 12),
             action: #selector(didTapTranslator),
             frame: CGRect(x: 0, y: 0, width: buttonWidth, height: customTabBarHeight)
         )
@@ -69,7 +69,7 @@ final class TabBarController: UITabBarController {
         let clickerButton = createButton(
             title: Strings.ButtonTitles.settings,
             image: Icons.Settings,
-            font: UIFont.systemFont(ofSize: 12),
+            font: UIFont(name: Fonts.KonkhmerSleokchher.regular, size: 12) ?? UIFont.systemFont(ofSize: 12),
             action: #selector(didTapClicker),
             frame: CGRect(x: buttonWidth, y: 0, width: buttonWidth, height: customTabBarHeight)
         )
