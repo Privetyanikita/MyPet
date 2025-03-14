@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class SettingsOptionViewCell: UITableViewCell {
-    
+    //MARK: - Properties
     private let backgroundShieldView: UIView = {
         let element = UIView()
         element.layer.cornerRadius = 20
@@ -37,6 +37,7 @@ final class SettingsOptionViewCell: UITableViewCell {
     
     static let reuseID = String(describing: SettingsOptionViewCell.self)
     
+    //MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -47,6 +48,7 @@ final class SettingsOptionViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Private Methods
     private func setupViews() {
         backgroundColor = .clear
         selectionStyle = .none
@@ -59,7 +61,7 @@ final class SettingsOptionViewCell: UITableViewCell {
         titleLabel.text = text
     }
 }
-
+//MARK: - Extensions
 extension SettingsOptionViewCell {
     private func setupConstrains() {
         backgroundShieldView.snp.makeConstraints { make in

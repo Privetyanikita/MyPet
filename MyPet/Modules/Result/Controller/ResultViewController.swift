@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class ResultViewController: UIViewController {
-    
+    //MARK: - Properties
     private let titleLabel: UILabel = {
         let element = UILabel()
         element.text = Strings.Titles.result
@@ -58,6 +58,7 @@ final class ResultViewController: UIViewController {
     private let fromRequest: TranslatFrom
     private let toRequest: Pet
     
+    //MARK: - Init
     init(requestFromSpeech: String, from: TranslatFrom, to pet: Pet) {
         self.fromRequest = from
         self.requestLabel.text = requestFromSpeech
@@ -69,6 +70,7 @@ final class ResultViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setGradientBackground()
@@ -78,6 +80,7 @@ final class ResultViewController: UIViewController {
         setupConstraints()
     }
     
+    //MARK: - Private Methods
     private func setupViews() {
         view.add(subviews: titleLabel, messageImageView, petImageView, closeButton, requestLabel, repeatButton)
         repeatButton.isHidden = true
@@ -163,7 +166,7 @@ final class ResultViewController: UIViewController {
         }
     }
 }
-
+//MARK: - Extensions
 extension ResultViewController {
     private func setupConstraints() {
         titleLabel.snp.makeConstraints { make in

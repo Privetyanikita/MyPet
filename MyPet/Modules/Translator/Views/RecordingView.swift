@@ -14,7 +14,7 @@ protocol RecordingViewDelegate: AnyObject {
 }
 
 final class RecordingView: UIView {
-    
+    //MARK: - Properties
     private let microImageView: UIImageView = {
         let element = UIImageView()
         element.image = Icons.Micophone
@@ -43,6 +43,7 @@ final class RecordingView: UIView {
     
     weak var delegate: RecordingViewDelegate?
     
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -55,6 +56,7 @@ final class RecordingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Private Methods
     private func setupViews() {
         self.add(subviews: microImageView, titleLabel, waveformVisualizerImageView)
         self.backgroundColor = .white
@@ -108,7 +110,7 @@ final class RecordingView: UIView {
         }
     }
 }
-
+//MARK: - Extension
 extension RecordingView {
     private func setupConstraints() {
         microImageView.snp.makeConstraints { make in

@@ -8,7 +8,7 @@
 import UIKit
 
 final class RoleSwitcherView: UIView {
-    
+    //MARK: - Properties
     private let humanLabel: UILabel = {
         let element = UILabel()
         element.text = Strings.Titles.human.uppercased()
@@ -46,9 +46,11 @@ final class RoleSwitcherView: UIView {
     
     private(set) var isHumanFirst = true
     
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -59,7 +61,6 @@ final class RoleSwitcherView: UIView {
     private func setupUI() {
         addSubview(containerStackView)
         switchButton.addTarget(self, action: #selector(switchRole), for: .touchUpInside)
-        setupConstraints()
     }
     
     @objc private func switchRole() {

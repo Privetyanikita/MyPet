@@ -13,7 +13,7 @@ protocol PetSwitcherDelegate: AnyObject {
 }
 
 final class PetSwitcher: UIView {
-    
+    //MARK: - Properties
     private let catImageView: UIImageView = {
         let element = UIImageView()
         element.backgroundColor = .clear
@@ -49,7 +49,7 @@ final class PetSwitcher: UIView {
     private(set) var isCatSelected = true
     
     weak var delegate: PetSwitcherDelegate?
-    
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -61,6 +61,7 @@ final class PetSwitcher: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Private Methods
     private func setupViews() {
         self.add(subviews: catBackground, dogBackGroundView)
         catBackground.add(subviews: catImageView)
@@ -110,6 +111,7 @@ final class PetSwitcher: UIView {
     }
 }
 
+//MARK: - Extensions
 extension PetSwitcher {
     private func setupConstraints() {
         

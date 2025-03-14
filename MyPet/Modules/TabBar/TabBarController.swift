@@ -8,13 +8,14 @@
 import UIKit
 
 final class TabBarController: UITabBarController {
-    
+    //MARK: - Properties
     private var translatorButton: UIButton!
     private var clickerButton: UIButton!
     private var activeButton: UIButton?
     private let customTabBarView = UIView()
     private let customTabBarHeight: CGFloat = 82
     
+    //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabBar()
@@ -27,6 +28,7 @@ final class TabBarController: UITabBarController {
         additionalSafeAreaInsets.bottom = bottomInset
     }
     
+    //MARK: - Private Methods
     private func setupTabBar() {
         let translatorVC = TranslatorViewController()
         let clickerVC = SettingsViewController()

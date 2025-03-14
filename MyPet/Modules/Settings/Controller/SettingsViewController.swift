@@ -8,7 +8,7 @@
 import UIKit
 
 final class SettingsViewController: UIViewController {
-    
+    //MARK: - Properties
     private let titleLabel: UILabel = {
         let element = UILabel()
         element.text = Strings.Titles.settings
@@ -33,6 +33,7 @@ final class SettingsViewController: UIViewController {
     
     private let stringsData = Strings.Titles.settingsParameters
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setGradientBackground()
@@ -40,6 +41,7 @@ final class SettingsViewController: UIViewController {
         setupConstraints()
     }
     
+    //MARK: - Private Methods
     private func setupViews() {
         view.add(subviews: titleLabel, tableView)
     }
@@ -54,7 +56,7 @@ final class SettingsViewController: UIViewController {
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
-
+//MARK: - Extensions
 extension SettingsViewController {
     private func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
