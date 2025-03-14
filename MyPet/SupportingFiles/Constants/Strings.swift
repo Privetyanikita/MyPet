@@ -30,6 +30,7 @@ enum Strings {
         static let settings = "Setttings"
         static let startSpeak = "Start Speak"
         static let recording = "Recording..."
+        static let repeatStr = "Repeat"
     }
     
     enum AnswerPets {

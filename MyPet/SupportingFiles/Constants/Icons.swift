@@ -17,4 +17,5 @@ enum Icons {
     static let MessageBig: UIImage = .messageBigIcon
     static let Close: UIImage = .closeIcon
     static let ArrowRight: UIImage = .arrowRightIcon
+    static let Reload: UIImage = .reloadIcon
 }

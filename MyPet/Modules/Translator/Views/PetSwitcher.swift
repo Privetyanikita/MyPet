@@ -67,6 +67,9 @@ final class PetSwitcher: UIView {
         dogBackGroundView.add(subviews: dogImageView)
         self.layer.cornerRadius = 12
         self.backgroundColor = .white
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowOffset = CGSize(width: 0, height: 4)
+        self.layer.shadowRadius = 8
         unSelectedAndSelected(petSelected: .cat)
     }
     
@@ -77,7 +80,6 @@ final class PetSwitcher: UIView {
     
     @objc private func petChangeTap() {
         isCatSelected.toggle()
-        print(isCatSelected)
         
         delegate?.petSwitcherDidSelected(isCatSelected: isCatSelected)
         

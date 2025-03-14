@@ -53,6 +53,8 @@ final class ResultViewController: UIViewController {
         return element
     }()
     
+    private let repeatButton = RepeatCustomButton(title: Strings.ButtonTitles.repeatStr, image: Icons.Reload)
+    
     private let fromRequest: TranslatFrom
     private let toRequest: Pet
     
@@ -77,7 +79,12 @@ final class ResultViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.add(subviews: titleLabel, messageImageView, petImageView, closeButton, requestLabel)
+        view.add(subviews: titleLabel, messageImageView, petImageView, closeButton, requestLabel, repeatButton)
+        repeatButton.isHidden = true
+        repeatButton.alpha = 0
+        repeatButton.layer.shadowOpacity = 0.2
+        repeatButton.layer.shadowOffset = CGSize(width: 0, height: 8)
+        repeatButton.layer.shadowRadius = 8
     }
     
     private func setGradientBackground() {
@@ -86,12 +93,13 @@ final class ResultViewController: UIViewController {
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
         gradientLayer.frame = view.bounds
-
+        
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
     private func addTarget() {
         closeButton.addTarget(self, action: #selector(closeTap), for: .touchUpInside)
+        repeatButton.addTarget(self, action: #selector(repeatTap), for: .touchUpInside)
     }
     
     private func setupScreens() {
@@ -112,10 +120,47 @@ final class ResultViewController: UIViewController {
         case .dog:
             petImageView.image = Icons.Dog
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [self] in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.messageImageView.alpha = 0
+                self.requestLabel.alpha = 0
+            }) { _ in
+                self.messageImageView.isHidden = true
+                self.requestLabel.isHidden = true
+            }
+            
+            repeatButton.isHidden = false
+            repeatButton.alpha = 0
+            
+            UIView.animate(withDuration: 0.3) {
+                self.repeatButton.alpha = 1
+            }
+        }
     }
     
     @objc private func closeTap() {
         dismiss(animated: true)
+    }
+    
+    @objc private func repeatTap() {
+        setupScreens()
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.repeatButton.alpha = 0
+        }) { _ in
+            self.repeatButton.isHidden = true
+        }
+        
+        messageImageView.isHidden = false
+        requestLabel.isHidden = false
+        messageImageView.alpha = 0
+        requestLabel.alpha = 0
+        
+        UIView.animate(withDuration: 0.3) {
+            self.messageImageView.alpha = 1
+            self.requestLabel.alpha = 1
+        }
     }
 }
 
@@ -147,6 +192,12 @@ extension ResultViewController {
             make.top.equalTo(messageImageView)
             make.leading.trailing.equalTo(messageImageView).inset(25)
             make.bottom.equalTo(messageImageView.snp.bottom).offset(-115)
+        }
+        
+        repeatButton.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(179)
+            make.leading.trailing.equalToSuperview().inset(50)
+            make.height.equalTo(54)
         }
     }
 }

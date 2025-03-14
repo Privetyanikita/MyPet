@@ -48,8 +48,8 @@ final class SettingsOptionViewCell: UITableViewCell {
     }
     
     private func setupViews() {
-        contentView.backgroundColor = .clear
-        backgroundView?.backgroundColor = .clear
+        backgroundColor = .clear
+        selectionStyle = .none
         contentView.addSubview(backgroundShieldView)
         backgroundShieldView.addSubview(titleLabel)
         backgroundShieldView.addSubview(arrowRightImage)

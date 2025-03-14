@@ -156,7 +156,6 @@ extension TranslatorViewController {
 extension TranslatorViewController: PetSwitcherDelegate {
     func petSwitcherDidSelected(isCatSelected: Bool) {
         let newImage = isCatSelected ? Icons.Cat : Icons.Dog
-        print(requestText)
         
         UIView.transition(with: petImageView, duration: 0.3, options: .transitionCrossDissolve, animations: {
             self.petImageView.image = newImage

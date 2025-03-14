@@ -59,13 +59,16 @@ final class RecordingView: UIView {
         self.add(subviews: microImageView, titleLabel, waveformVisualizerImageView)
         self.backgroundColor = .white
         self.layer.cornerRadius = 16
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowOffset = CGSize(width: 0, height: 4)
+        self.layer.shadowRadius = 8
     }
     
     private func loadGifFileAtImageView() {
         guard let gifURL = Bundle.main.url(forResource: "WaveformVisualizer", withExtension: "gif"),
               let gifData = try? Data(contentsOf: gifURL),
               let animatedImage = UIImage.animatedImage(withGIFData: gifData) else {
-            print("Не удалось загрузить gif")
             return
         }
         waveformVisualizerImageView.image = animatedImage
